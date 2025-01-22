@@ -10,7 +10,7 @@
         public double TrainerWeight { get; set; }
         public double TrainerHeight { get; set; }
         public DateTime JoiningDate { get; set; }
-        public string Experience { get; set; }
+        public double Experience { get; set; }
         public double Salary { get; set; }
         public int GymShift { get; set; }
         public string username { get; set; }

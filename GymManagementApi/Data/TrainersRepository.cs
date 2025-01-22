@@ -42,7 +42,7 @@ namespace GymManagementApi.Data
                         GymShift = Convert.ToInt32(reader["GymShift"]),
                         username = reader["username"].ToString(),
                         password = reader["password"].ToString(),
-                        Experience = reader["Experience"].ToString(),
+                        Experience = Convert.ToDouble(reader["Experience"]),
                     });
                 }
             }
@@ -80,7 +80,7 @@ namespace GymManagementApi.Data
                         GymShift = Convert.ToInt32(reader["GymShift"]),
                         username = reader["username"].ToString(),
                         password = reader["password"].ToString(),
-                        Experience = reader["Experience"].ToString(),
+                        Experience = Convert.ToDouble(reader["Experience"]),
                     };
                 }
             }
