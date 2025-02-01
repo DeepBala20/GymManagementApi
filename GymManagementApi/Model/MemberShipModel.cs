@@ -11,5 +11,7 @@
     {
         public int? MemberShipID { get; set; }
         public string MemberShipName { get; set; }
+
+        public string MemberShipDuration { get; set; }
     }
 }

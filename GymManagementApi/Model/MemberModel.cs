@@ -12,14 +12,14 @@
         public double MemberBMI { get; set; }
         public DateTime JoiningDate { get; set; }
         public int JoiningReasonID { get; set; }
-        public int GymShift { get; set; }
+        public string GymShift { get; set; }
         public int MemberShipID { get; set; }
         public int TrainerID { get; set; }
         public int IsAdmin { get; set; }
         public string username { get; set; }
         public string password { get; set; }
-        public string MemberShipName { get; set; }
-        public string TrainerName { get; set; }
+        public string? MemberShipName { get; set; }
+        public string? TrainerName { get; set; }
         public DateTime MemberShipEndDate { get; set; }
     }
 

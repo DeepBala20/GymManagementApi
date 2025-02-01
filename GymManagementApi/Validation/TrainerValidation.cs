@@ -58,13 +58,13 @@ namespace GymManagementApi.Validation
                 .NotEmpty().WithMessage("Username is required.")
                 .Length(5, 20).WithMessage("Username must be between 5 and 20 characters.");
 
-            RuleFor(r => r.password)
-                .NotEmpty().WithMessage("Password is required.")
-                .MinimumLength(8).WithMessage("Password must be at least 8 characters long.")
-                .Matches(@"[A-Z]").WithMessage("Password must contain at least one uppercase letter.")
-                .Matches(@"[a-z]").WithMessage("Password must contain at least one lowercase letter.")
-                .Matches(@"\d").WithMessage("Password must contain at least one number.")
-                .Matches(@"[\@\!\#\$\%\^\&\*\(\)\_\+\-]").WithMessage("Password must contain at least one special character.");
+            //RuleFor(r => r.password)
+            //    .NotEmpty().WithMessage("Password is required.")
+            //    .MinimumLength(8).WithMessage("Password must be at least 8 characters long.")
+            //    .Matches(@"[A-Z]").WithMessage("Password must contain at least one uppercase letter.")
+            //    .Matches(@"[a-z]").WithMessage("Password must contain at least one lowercase letter.")
+            //    .Matches(@"\d").WithMessage("Password must contain at least one number.")
+            //    .Matches(@"[\@\!\#\$\%\^\&\*\(\)\_\+\-]").WithMessage("Password must contain at least one special character.");
         }
     }
 }

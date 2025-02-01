@@ -58,6 +58,11 @@ namespace GymManagementApi.Controllers
         [HttpPost]
         public IActionResult AddMember([FromBody] MemberModel member)
         {
+            Console.WriteLine("Called");
+            Console.WriteLine(member);
+            Console.WriteLine("above is print member");
+
+
 
             if (member == null)
             {

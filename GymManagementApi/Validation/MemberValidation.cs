@@ -7,6 +7,7 @@ namespace GymManagementApi.Validation
     {
         public MemberValidation() 
         {
+            Console.WriteLine("validation called..........");
             //RuleFor(r => r.MemberName);
             //RuleFor(r => r.MemberMobile);
             //RuleFor(r => r.MemberEmail);
@@ -23,8 +24,7 @@ namespace GymManagementApi.Validation
             //RuleFor(r => r.username);
             //RuleFor(r => r.password);
             RuleFor(r => r.MemberName)
-            .NotEmpty().WithMessage("Member name is required.")
-            .MaximumLength(50).WithMessage("Member name must not exceed 50 characters.");
+            .NotEmpty().WithMessage("Member name is required.");
 
             RuleFor(r => r.MemberMobile)
                 .NotEmpty().WithMessage("Member mobile number is required.")
@@ -35,7 +35,7 @@ namespace GymManagementApi.Validation
                 .EmailAddress().WithMessage("Member email must be a valid email address.");
 
             RuleFor(r => r.MemberAge)
-                .InclusiveBetween(16, 80).WithMessage("Member age must be between 16 and 80.");
+                .InclusiveBetween(16, 100).WithMessage("Member age must be between 16 and 100.");
 
             RuleFor(r => r.MemberWeight)
                 .GreaterThan(20).WithMessage("Member weight must be greater than 20 kg.");
@@ -44,8 +44,7 @@ namespace GymManagementApi.Validation
                 .GreaterThan(100).WithMessage("Member height must be greater than 100 cm.");
 
             RuleFor(r => r.MemberBMI)
-                .GreaterThanOrEqualTo(10).WithMessage("Member BMI must be at least 10.")
-                .LessThanOrEqualTo(40).WithMessage("Member BMI must not exceed 40.");
+                .NotEmpty().WithMessage("Member Bmi is required.");
 
             RuleFor(r => r.JoiningDate)
                 .NotEmpty().WithMessage("Joining date is required.")
@@ -75,11 +74,15 @@ namespace GymManagementApi.Validation
 
             RuleFor(r => r.password)
                 .NotEmpty().WithMessage("Password is required.")
-                .MinimumLength(8).WithMessage("Password must be at least 8 characters long.")
-                .Matches(@"[A-Z]").WithMessage("Password must contain at least one uppercase letter.")
-                .Matches(@"[a-z]").WithMessage("Password must contain at least one lowercase letter.")
-                .Matches(@"\d").WithMessage("Password must contain at least one number.")
-                .Matches(@"[\@\!\#\$\%\^\&\*\(\)\_\+\-]").WithMessage("Password must contain at least one special character.");
+                .MinimumLength(8).WithMessage("Password must be at least 8 characters long.");
+
+            //RuleFor(r => r.password)
+            //    .NotEmpty().WithMessage("Password is required.")
+            //    .MinimumLength(8).WithMessage("Password must be at least 8 characters long.")
+            //    .Matches(@"[A-Z]").WithMessage("Password must contain at least one uppercase letter.")
+            //    .Matches(@"[a-z]").WithMessage("Password must contain at least one lowercase letter.")
+            //    .Matches(@"\d").WithMessage("Password must contain at least one number.")
+            //    .Matches(@"[\@\!\#\$\%\^\&\*\(\)\_\+\-]").WithMessage("Password must contain at least one special character.");
 
         }
     }

@@ -16,6 +16,7 @@ namespace GymManagementApi.Data
         public IEnumerable<MemberModel> GetAllMembers() 
         { 
             var members = new List<MemberModel>();
+            //Console.WriteLine("member retrived");
 
             using (SqlConnection conn = new SqlConnection(_connectionString)) 
             {
@@ -39,7 +40,7 @@ namespace GymManagementApi.Data
                         MemberBMI = Convert.ToInt32(reader["MemberBMI"]),
                         JoiningDate = Convert.ToDateTime(reader["JoiningDate"]),
                         JoiningReasonID = Convert.ToInt32(reader["JoiningReasonID"]),
-                        GymShift = Convert.ToInt32(reader["GymShift"]),
+                        GymShift = reader["GymShift"].ToString(),
                         MemberShipID = Convert.ToInt32(reader["MemberShipID"]),
                         MemberShipEndDate = Convert.ToDateTime(reader["MemberShipEndDate"]),
                         TrainerID = Convert.ToInt32(reader["TrainerID"]),
@@ -83,7 +84,7 @@ namespace GymManagementApi.Data
                         MemberBMI = Convert.ToInt32(reader["MemberBMI"]),
                         JoiningDate = Convert.ToDateTime(reader["JoiningDate"]),
                         JoiningReasonID = Convert.ToInt32(reader["JoiningReasonID"]),
-                        GymShift = Convert.ToInt32(reader["GymShift"]),
+                        GymShift = reader["GymShift"].ToString(),
                         MemberShipID = Convert.ToInt32(reader["MemberShipID"]),
                         MemberShipEndDate = Convert.ToDateTime(reader["MemberShipEndDate"]),
                         TrainerID = Convert.ToInt32(reader["TrainerID"]),
@@ -120,6 +121,7 @@ namespace GymManagementApi.Data
 
         public bool AddMember(MemberModel member)
         {
+            Console.WriteLine("Adding a member..",member);
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
                 SqlCommand cmd = new SqlCommand("PR_Gym_Members_Add", conn)
@@ -143,7 +145,7 @@ namespace GymManagementApi.Data
                 cmd.Parameters.AddWithValue("@username", member.username);
                 cmd.Parameters.AddWithValue("@password", member.password);
                 conn.Open();
-                int rowsAffect = cmd.ExecuteNonQuery();
+                var rowsAffect = cmd.ExecuteNonQuery();
                 return rowsAffect > 0;
             }
         }
@@ -178,7 +180,7 @@ namespace GymManagementApi.Data
                 cmd.Parameters.AddWithValue("@username", member.username);
                 cmd.Parameters.AddWithValue("@password", member.password);
                 conn.Open();
-                int rowsAffect = cmd.ExecuteNonQuery();
+                var rowsAffect = cmd.ExecuteNonQuery();
                 return rowsAffect > 0;
             }
         }

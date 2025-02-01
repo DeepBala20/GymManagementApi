@@ -14,10 +14,10 @@ namespace GymManagementApi.Validation
             .NotEmpty().WithMessage("Diet Plan ID is required.")
             .GreaterThan(0).WithMessage("Diet Plan ID must be a positive number.");
 
-            RuleFor(r => r.DietType)
-                .NotEmpty().WithMessage("Diet type is required.")
-                .Must(type => new[] { "Vegetarian", "Non-Vegetarian", "Vegan", "Keto", "Paleo" }.Contains(type))
-                .WithMessage("Diet type must be one of the following: Vegetarian, Non-Vegetarian, Vegan, Keto, or Paleo.");
+            //RuleFor(r => r.DietType)
+            //    .NotEmpty().WithMessage("Diet type is required.")
+            //    .Must(type => new[] { "Vegetarian", "Non-Vegetarian", "Vegan", "Keto", "Paleo" }.Contains(type))
+            //    .WithMessage("Diet type must be one of the following: Vegetarian, Non-Vegetarian, Vegan, Keto, or Paleo.");
 
             RuleFor(r => r.JoiningReason)
                 .NotEmpty().WithMessage("Joining reason is required.")

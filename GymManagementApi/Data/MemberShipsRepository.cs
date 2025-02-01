@@ -148,6 +148,7 @@ namespace GymManagementApi.Data
                     {
                         MemberShipID = Convert.ToInt32(reader["MemberShipID"]),
                         MemberShipName = reader["MemberShipName"].ToString(),
+                        MemberShipDuration = reader["MemberShipDuration"].ToString(),
                     });
                 }
             }

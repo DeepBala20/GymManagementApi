@@ -16,9 +16,7 @@ namespace GymManagementApi.Validation
             //RuleFor(r => r.Friday);
             //RuleFor(r => r.Saturday);
             RuleFor(r => r.DietType)
-            .NotEmpty().WithMessage("Diet type is required.")
-            .Must(type => new[] { "Vegetarian", "Non-Vegetarian", "Vegan", "Keto", "Paleo" }.Contains(type))
-            .WithMessage("Diet type must be one of the following: Vegetarian, Non-Vegetarian, Vegan, Keto, or Paleo.");
+            .NotEmpty().WithMessage("Diet type is required.");
 
             RuleFor(r => r.Sunday)
                 .NotEmpty().WithMessage("Sunday diet plan is required.")
