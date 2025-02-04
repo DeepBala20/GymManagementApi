@@ -11,8 +11,7 @@ namespace GymManagementApi.Validation
             //RuleFor(r => r.PaymentDate);
             //RuleFor(r => r.MemberID);
             RuleFor(r => r.PaymentMethod)
-            .NotEmpty().WithMessage("Payment method is required.")
-            .WithMessage("Payment method must be one of the following: Cash, Card, or Online.");
+            .NotEmpty().WithMessage("Payment method is required.");
 
             RuleFor(r => r.PaymentDate)
                 .NotEmpty().WithMessage("Payment date is required.")

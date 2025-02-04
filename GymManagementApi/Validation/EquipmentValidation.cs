@@ -17,9 +17,7 @@ namespace GymManagementApi.Validation
             .MaximumLength(100).WithMessage("Equipment name must not exceed 100 characters.");
 
             RuleFor(r => r.EquipmentImage)
-                .NotEmpty().WithMessage("Equipment image is required.")
-                .Must(image => image.EndsWith(".jpg") || image.EndsWith(".jpeg") || image.EndsWith(".png"))
-                .WithMessage("Equipment image must be a valid image file (.jpg, .jpeg, or .png).");
+                .NotEmpty().WithMessage("Equipment image is required.");
 
             RuleFor(r => r.EquipmentPrice)
                 .NotEmpty().WithMessage("Equipment price is required.")

@@ -56,6 +56,51 @@ namespace GymManagementApi.Data
         }
         #endregion
 
+        #region GetAllMembersByTrainer
+        public IEnumerable<MemberModel> GetAllMembersByTrainer(int trainerID)
+        {
+            var members = new List<MemberModel>();
+            //Console.WriteLine("member retrived");
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("PR_Gym_Members_TrainerWise_SelectAll", conn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure,
+                };
+                cmd.Parameters.AddWithValue("@TrainerID", trainerID);
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    members.Add(new MemberModel
+                    {
+                        MemberID = Convert.ToInt32(reader["MemberID"]),
+                        MemberName = reader["MemberName"].ToString(),
+                        MemberMobile = reader["MemberMobile"].ToString(),
+                        MemberEmail = reader["MemberEmail"].ToString(),
+                        MemberAge = Convert.ToInt32(reader["MemberAge"]),
+                        MemberWeight = Convert.ToInt32(reader["MemberWeight"]),
+                        MemberHeight = Convert.ToInt32(reader["MemberHeight"]),
+                        MemberBMI = Convert.ToInt32(reader["MemberBMI"]),
+                        JoiningDate = Convert.ToDateTime(reader["JoiningDate"]),
+                        JoiningReasonID = Convert.ToInt32(reader["JoiningReasonID"]),
+                        GymShift = reader["GymShift"].ToString(),
+                        MemberShipID = Convert.ToInt32(reader["MemberShipID"]),
+                        MemberShipEndDate = Convert.ToDateTime(reader["MemberShipEndDate"]),
+                        TrainerID = Convert.ToInt32(reader["TrainerID"]),
+                        IsAdmin = Convert.ToInt32(reader["IsAdmin"]),
+                        username = reader["username"].ToString(),
+                        password = reader["password"].ToString(),
+                        MemberShipName = reader["MemberShipName"].ToString(),
+                        TrainerName = reader["TrainerName"].ToString(),
+                    });
+                }
+            }
+            return members;
+        }
+        #endregion
+
         #region GetMeberByPk
 
         public MemberModel GetMeberByPk(int memberID)
@@ -205,6 +250,7 @@ namespace GymManagementApi.Data
                     {
                         MemberID = Convert.ToInt32(reader["MemberID"]),
                         MemberName = reader["MemberName"].ToString(),
+                        MemberShipPrice = reader["MemberShipPrice"].ToString()
                     });
                 }
             }

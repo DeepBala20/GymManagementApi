@@ -27,6 +27,7 @@
     {
         public int MemberID { get; set; }
         public string MemberName { get; set; }
+        public string MemberShipPrice { get; set; }
     }
 
  }

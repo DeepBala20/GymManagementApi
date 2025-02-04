@@ -39,7 +39,6 @@ namespace GymManagementApi.Data
                     {
                         CommandType = System.Data.CommandType.StoredProcedure
                     };
-
                     cmd.Parameters.AddWithValue("@username", auth.UserName);
                     cmd.Parameters.AddWithValue("@password", auth.Password);
                     cmd.Parameters.AddWithValue("@IsAdmin", isAdminValue);
@@ -52,6 +51,7 @@ namespace GymManagementApi.Data
                     {
                         user = new AuthModel()
                         {
+                            Id = reader["MemberID"].ToString(),
                             UserName = reader["username"].ToString(),
                             Email = reader["MemberEmail"].ToString(),
                             IsAdmin = Convert.ToBoolean(reader["IsAdmin"]) // Convert BIT to bool
@@ -87,6 +87,7 @@ namespace GymManagementApi.Data
                     {
                         trainer = new AuthModel()
                         {
+                            Id = reader["TrainerID"].ToString(),
                             UserName = reader["username"].ToString(),
                             Email = reader["TrainerEmail"].ToString(),
                             Role = "trainer"
@@ -107,7 +108,8 @@ namespace GymManagementApi.Data
                 new Claim(JwtRegisteredClaimNames.Sub, auth.UserName),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim("role", auth.Role),
-                new Claim("email", auth.Email) // Add email dynamically
+                new Claim("email", auth.Email),
+                new Claim("id",auth.Id),
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtSettings.SecretKey));

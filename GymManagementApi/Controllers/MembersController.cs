@@ -26,6 +26,13 @@ namespace GymManagementApi.Controllers
             return Ok(members);
         }
 
+        [HttpGet("trainerwise/{id}")]
+        public IActionResult GetAllMembersByTrainer(int id)
+        {
+            var members = _membersRepository.GetAllMembersByTrainer(id);
+            return Ok(members);
+        }
+
         [HttpGet("drp")]
         public IActionResult GetMembersDropDown()
         {

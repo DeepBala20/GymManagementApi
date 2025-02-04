@@ -9,7 +9,7 @@ namespace GymManagementApi.Controllers
     [Route("api/[controller]")]
     [ApiController]
 
-    [Authorize]
+    //[Authorize]
     public class MemberShipsController : ControllerBase
     {
         private readonly MemberShipsRepository _memberShipsRepository;
@@ -32,7 +32,7 @@ namespace GymManagementApi.Controllers
             var memberShipsdrp = _memberShipsRepository.GetMemberShipsDropDown();
             return Ok(memberShipsdrp);
         }
-
+        [Authorize]
         [HttpGet("{id}")]
         public IActionResult GetMemberShipByPK(int id)
         {
@@ -44,7 +44,7 @@ namespace GymManagementApi.Controllers
             }
             return Ok(memberShip);
         }
-
+        [Authorize]
         [HttpDelete("{id}")]
         public IActionResult DeleteMemberShip(int id)
         {
@@ -55,7 +55,7 @@ namespace GymManagementApi.Controllers
             }
             return NoContent();
         }
-
+        [Authorize]
         [HttpPost]
         public IActionResult AddMemberShip([FromBody] MemberShipModel memberShip)
         {
@@ -71,7 +71,7 @@ namespace GymManagementApi.Controllers
             }
             return StatusCode(500, "server error");
         }
-
+        [Authorize]
         [HttpPut("{id}")]
         public IActionResult UpdateMemberShip(int id, [FromBody] MemberShipModel memberShip)
         {
