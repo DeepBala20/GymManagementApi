@@ -28,10 +28,10 @@ namespace GymManagementApi.Controllers
             var report = _attendanceRepository.AttendanceReportByPK(id);
             return Ok(report);
         }
-        [HttpGet("membersreport")]
-        public IActionResult MembersAttendanceReport()
+        [HttpGet("membersreport/{id}")]
+        public IActionResult MembersAttendanceReport(int id)
         {
-            var report = _attendanceRepository.MembersAttendanceReport();
+            var report = _attendanceRepository.MembersAttendanceReport(id);
             return Ok(report);
         }
         [HttpGet("trainersreport")]
@@ -68,35 +68,6 @@ namespace GymManagementApi.Controllers
             }
             return StatusCode(500, "server error");
         }
-        [HttpPut("updateMembersAttendance/{id}")]
-        public IActionResult UpdateMembersAttendance(int id, [FromBody] UpdateAttendanceModelForMember attendance)
-        {
-
-            if (attendance == null || id != attendance.AttendanceID)
-            {
-                return BadRequest();
-            }
-            bool isUpdate = _attendanceRepository.UpdateMembersAttendance(attendance);
-            if (isUpdate)
-            {
-                return Ok(attendance);
-            }
-            return StatusCode(500, "server error");
-        }
-        [HttpPut("updateTrainersAttendance/{id}")]
-        public IActionResult UpdateTrainersAttendance(int id, [FromBody] UpdateAttendanceModelForTrainer attendance)
-        {
-
-            if (attendance == null || id != attendance.AttendanceID)
-            {
-                return BadRequest();
-            }
-            bool isUpdate = _attendanceRepository.UpdateTrainersAttendance(attendance);
-            if (isUpdate)
-            {
-                return Ok(attendance);
-            }
-            return StatusCode(500, "server error");
-        }
+       
     }
 }

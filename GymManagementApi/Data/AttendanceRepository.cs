@@ -84,7 +84,7 @@ namespace GymManagementApi.Data
         }
         #endregion
         #region MembersAttendanceReport
-        public IEnumerable<AttendanceModel> MembersAttendanceReport()
+        public IEnumerable<AttendanceModel> MembersAttendanceReport(int TrainerID)
         {
             var attendanceReport = new List<AttendanceModel>();
 
@@ -94,6 +94,7 @@ namespace GymManagementApi.Data
                 {
                     CommandType = System.Data.CommandType.StoredProcedure
                 };
+                cmd.Parameters.AddWithValue("@TrainerID", TrainerID);
                 conn.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -191,44 +192,6 @@ namespace GymManagementApi.Data
 
         #endregion
 
-        #region UpdateTrainersAttendence
-        public bool UpdateMembersAttendance(UpdateAttendanceModelForMember attendance)
-        {
-            using (SqlConnection conn = new SqlConnection(_connectionString))
-            {
-                SqlCommand cmd = new SqlCommand("PR_EditMemberAttendanceByTrainer", conn)
-                {
-                    CommandType = CommandType.StoredProcedure
-                };
-                cmd.Parameters.AddWithValue("@TrainerID", attendance.TrainerID);
-                cmd.Parameters.AddWithValue("@AttendanceID", attendance.AttendanceID);
-                cmd.Parameters.AddWithValue("@Status", attendance.AttendanceStatus);
-                conn.Open();
-                int rowsAffect = cmd.ExecuteNonQuery();
-                return rowsAffect > 0;
-            }
-        }
-
-        #endregion
-
-        #region UpdateTrainersAttendence
-        public bool UpdateTrainersAttendance(UpdateAttendanceModelForTrainer attendance)
-        {
-            using (SqlConnection conn = new SqlConnection(_connectionString))
-            {
-                SqlCommand cmd = new SqlCommand("PR_EditTrainerAttendanceByAdmin", conn)
-                {
-                    CommandType = CommandType.StoredProcedure
-                };
-                cmd.Parameters.AddWithValue("@AttendanceID", attendance.AttendanceID);
-                cmd.Parameters.AddWithValue("@AdminID", attendance.MemberID);
-                cmd.Parameters.AddWithValue("@Status", attendance.AttendanceStatus);
-                conn.Open();
-                int rowsAffect = cmd.ExecuteNonQuery();
-                return rowsAffect > 0;
-            }
-        }
-
-        #endregion
+        
     }
 }
