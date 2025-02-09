@@ -121,7 +121,7 @@ namespace GymManagementApi.Data
                 cmd.Parameters.AddWithValue("@PaymentMethod", payment.PaymentMethod);
                 cmd.Parameters.AddWithValue("@MemberID", payment.MemberID);
                 conn.Open();
-                int rowsAffect = cmd.ExecuteNonQuery();
+                var rowsAffect = cmd.ExecuteNonQuery();
                 return rowsAffect > 0;
             }
         }

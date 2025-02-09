@@ -32,6 +32,12 @@ namespace GymManagementApi.Controllers
             var members = _membersRepository.GetAllMembersByTrainer(id);
             return Ok(members);
         }
+        [HttpGet("paymentstatus/{status}")]
+        public IActionResult GetAllMembersByPaymentStatus(string status)
+        {
+            var members = _membersRepository.GetAllMembersByPaymentStatus(status);
+            return Ok(members);
+        }
 
         [HttpGet("drp")]
         public IActionResult GetMembersDropDown()

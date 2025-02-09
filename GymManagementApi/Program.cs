@@ -13,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<DietPlansRepository>();
+builder.Services.AddScoped<DashboardRepository>();
 builder.Services.AddScoped<EquipmentsRepository>();
 builder.Services.AddScoped<JoiningReasonsRepository>();
 builder.Services.AddScoped<MembersRepository>();

@@ -21,6 +21,8 @@
         public string? MemberShipName { get; set; }
         public string? TrainerName { get; set; }
         public DateTime MemberShipEndDate { get; set; }
+        public string? DietPlanID { get; set; }
+        public string? PaymentStatus { get; set; }
     }
 
     public class MemberDropDoown
