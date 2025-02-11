@@ -34,6 +34,18 @@ namespace GymManagementApi.Controllers
             var report = _attendanceRepository.MembersAttendanceReport(id);
             return Ok(report);
         }
+        [HttpGet("singleMembersAttendance/{id}")]
+        public IActionResult GetSingleMembersAttendance(int id)
+        {
+            var report = _attendanceRepository.GetSingleMembersAttendance(id);
+            return Ok(report);
+        }
+        [HttpGet("singleTrainersAttendance/{id}")]
+        public IActionResult GetSingleTrainersAttendance(int id)
+        {
+            var report = _attendanceRepository.GetSingleTrainersAttendance(id);
+            return Ok(report);
+        }
         [HttpGet("trainersreport")]
         public IActionResult TrainersAttendanceReport()
         {

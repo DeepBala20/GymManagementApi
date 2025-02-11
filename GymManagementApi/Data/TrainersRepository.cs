@@ -43,6 +43,7 @@ namespace GymManagementApi.Data
                         username = reader["username"].ToString(),
                         password = reader["password"].ToString(),
                         Experience = Convert.ToDouble(reader["Experience"]),
+                        TrainerImage = reader["TrainerImage"].ToString(),
                     });
                 }
             }
@@ -81,6 +82,7 @@ namespace GymManagementApi.Data
                         username = reader["username"].ToString(),
                         password = reader["password"].ToString(),
                         Experience = Convert.ToDouble(reader["Experience"]),
+                        TrainerImage = reader["TrainerImage"].ToString(),
                     };
                 }
             }
@@ -127,6 +129,7 @@ namespace GymManagementApi.Data
                 cmd.Parameters.AddWithValue("@Salary", trainer.Salary);
                 cmd.Parameters.AddWithValue("@username", trainer.username);
                 cmd.Parameters.AddWithValue("@password", trainer.password);
+                cmd.Parameters.AddWithValue("@TrainerImage", trainer.TrainerImage);
                 conn.Open();
                 int rowsAffect = cmd.ExecuteNonQuery();
                 return rowsAffect > 0;
@@ -158,6 +161,7 @@ namespace GymManagementApi.Data
                 cmd.Parameters.AddWithValue("@Salary", trainer.Salary);
                 cmd.Parameters.AddWithValue("@username", trainer.username);
                 cmd.Parameters.AddWithValue("@password", trainer.password);
+                cmd.Parameters.AddWithValue("@TrainerImage", trainer.TrainerImage);
                 conn.Open();
                 int rowsAffect = cmd.ExecuteNonQuery();
                 return rowsAffect > 0;

@@ -23,6 +23,9 @@ namespace GymManagementApi.Validation
             .NotEmpty().WithMessage("Trainer name is required.")
             .MaximumLength(50).WithMessage("Trainer name must not exceed 50 characters.");
 
+            RuleFor(r => r.TrainerImage)
+                .NotEmpty().WithMessage("Equipment image is required.");
+
             RuleFor(r => r.TrainerMobile)
                 .NotEmpty().WithMessage("Trainer mobile number is required.")
                 .Matches(@"^\d{10}$").WithMessage("Trainer mobile number must be a valid 10-digit number.");
