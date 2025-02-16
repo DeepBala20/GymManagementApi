@@ -176,10 +176,37 @@ namespace GymManagementApi.Data
 
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
-                SqlCommand cmd = new SqlCommand("PR_Gym_Trainers_SelectAll", conn)
+                SqlCommand cmd = new SqlCommand("PR_Gym_Trainers_DropDown", conn)
                 {
                     CommandType = System.Data.CommandType.StoredProcedure,
                 };
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    trainersdrp.Add(new TrainerDropDown
+                    {
+                        TrainerID = Convert.ToInt32(reader["TrainerID"]),
+                        TrainerName = reader["TrainerName"].ToString(),
+                    });
+                }
+            }
+            return trainersdrp;
+        }
+        #endregion
+
+        #region GetTrainersMemberShipWiseDropDown
+        public IEnumerable<TrainerDropDown> GetTrainersMemberShipWiseDropDown(int memberShipID)
+        {
+            var trainersdrp = new List<TrainerDropDown>();
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("PR_Gym_Trainers_DropDown_MemberShipWise", conn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure,
+                };
+                cmd.Parameters.AddWithValue("@MemberShipID", memberShipID);
                 conn.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())

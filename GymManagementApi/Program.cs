@@ -22,6 +22,8 @@ builder.Services.AddScoped<PaymentsRepository>();
 builder.Services.AddScoped<TrainersRepository>();
 builder.Services.AddScoped<AuthRepository>();
 builder.Services.AddScoped<AttendanceRepository>();
+builder.Services.AddScoped<MemberShipWiseTrainerRepository>();
+builder.Services.AddScoped<RequestRepository>();
 
 
 builder.Services.AddControllers()
